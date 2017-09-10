@@ -119,14 +119,14 @@
 <meta name="keywords" content="理解原型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原型">
-<meta property="og:url" content="http://yoursite.com/2017/09/02/原型/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/原型/index.html">
 <meta property="og:site_name" content="LsJoker">
 <meta property="og:description" content="上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章传送门。这篇文章主要介绍JS的面向对象中继承的原理。  一、什么是原型JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。 1. 原型对象在JavaScript中，我们创建一个函数A(就是声明一个函数), 那么浏览器就会在内存中创建一个原型对象B">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-f4594e21110975d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-9a37ffdf7ca5d852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-bac46a4e9ef6bd1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-10T12:37:14.765Z">
+<meta property="og:updated_time" content="2017-09-10T13:02:55.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原型">
 <meta name="twitter:description" content="上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章传送门。这篇文章主要介绍JS的面向对象中继承的原理。  一、什么是原型JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。 1. 原型对象在JavaScript中，我们创建一个函数A(就是声明一个函数), 那么浏览器就会在内存中创建一个原型对象B">
@@ -160,7 +160,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/02/原型/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/29/原型/"/>
 
 
 
@@ -337,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/02/原型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/原型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LsJoker">
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T08:47:35+08:00">
-                2017-09-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T08:47:35+08:00">
+                2017-08-29
               </time>
             
 
@@ -406,7 +406,7 @@
 
           
           
-             <span id="/2017/09/02/原型/" class="leancloud_visitors" data-flag-title="原型">
+             <span id="/2017/08/29/原型/" class="leancloud_visitors" data-flag-title="原型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -469,7 +469,7 @@
 
       
         <blockquote>
-<p>上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章<a href="/Js原型/">传送门</a>。这篇文章主要介绍JS的面向对象中继承的原理。</p>
+<p>上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章<a href="https://lsjoker.github.io/2017/08/30/Js%E5%8E%9F%E5%9E%8B/#more" target="_blank" rel="external">传送门</a>。这篇文章主要介绍JS的面向对象中继承的原理。</p>
 </blockquote>
 <h2 id="一、什么是原型"><a href="#一、什么是原型" class="headerlink" title="一、什么是原型"></a>一、什么是原型</h2><p>JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。</p>
 <p><strong>1. 原型对象</strong><br>在JavaScript中，我们创建一个函数A(<strong>就是声明一个函数</strong>), 那么浏览器就会在内存中创建一个原型对象B，而且每个函数都默认会有一个属性 <strong>prototype</strong> 指向了这个对象( 即：<strong>prototype的属性的值是这个对象</strong> )。这个对象B就是函数A的原型对象，简称函数的原型。这个原型对象B 默认会有一个属性 <strong>constructor</strong> 指向了这个函数A ( 意思就是说：constructor属性的值是函数A )。</p>
@@ -571,15 +571,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/30/Js原型/" rel="next" title="JavaScript 原型（面向对象）">
-                <i class="fa fa-chevron-left"></i> JavaScript 原型（面向对象）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/Js原型/" rel="prev" title="JavaScript 原型（面向对象）">
+                JavaScript 原型（面向对象） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
