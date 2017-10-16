@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[函数的闭包]]></title>
     <url>%2F2017%2F10%2F16%2F%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AD%E5%8C%85%2F</url>
-    <content type="text"><![CDATA[title: 函数的闭包date: 2017-10-16 20:05:44categories: 函数tags: 函数的闭包 &emsp;&emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。 官方解释：&emsp;&emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&emsp;&emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&emsp;&emsp;通俗点说，我觉得应该是能够读取当前函数内部的变量的函数；本质上是将函数内部和函数外部链接起来的桥梁。直接上代码吧： function outside(){ var joker = “joker”; function inside(){ console.log(joker);//这里outside内部的局部变量被inside访问了，可以借助inside来访问outside的局部变量，则inside就是一个闭包 } return inside;}var result = outside();result();//“joker”闭包的用途：&emsp;&emsp;闭包最大的三个用途：&emsp;&emsp;1.上面提到的，获取函数内部的变量；&emsp;&emsp;2.让读取到的函数内部的值保存在内存中，方便调用时可以直接使用；&emsp;&emsp;3.当然还有一点，闭包可以保持作用域的清洁不受变量的污染；那么从第二点开始吧，demo:function outside(){ var n = 555; add = function(){n = n+5}; function inside(){ console.log(n); }; return inside;}var result = outside();result();//555add();result();//560在这里result实际上就是闭包inside函数，证明outside中的局部变量n一直保存在内存中，并没有在调用结束后就清除。第三点：demo：var data= { number : [1,2,3], strings : [“J”,”k”,”R”]};(function(data){ for(var i = 0; i &lt; data.number.length; i++){ console.log(data.number[i],data.strings[i]); } //1,’j’,2,’k’,3,’r’})(data);我们再次创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。闭包的注意点： 由于闭包会使得函数中的变量被保存在内存中，内存消耗很大，所以不能滥用，ie中可能导致内存泄露，在退出函数之前一定要将不使用的全局变量删除。还有一点，注意闭包会在父函数外部，改变父函数内部的值！本次更新最后：希望文章能对你的技术有帮助。由于本人水平有限，如有错误，欢迎大家指正。如果你在操作过程中发现一些没有讲到的错误或者问题，欢迎在评论留言，一起探讨，共同学习，共同进步！]]></content>
+    <content type="text"><![CDATA[&emsp;&emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。 官方解释：&emsp;&emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&emsp;&emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&emsp;&emsp;通俗点说，我觉得应该是能够读取当前函数内部的变量的函数；本质上是将函数内部和函数外部链接起来的桥梁。直接上代码吧： function outside(){ var joker = “joker”; function inside(){ console.log(joker);//这里outside内部的局部变量被inside访问了，可以借助inside来访问outside的局部变量，则inside就是一个闭包 } return inside;}var result = outside();result();//“joker”闭包的用途：&emsp;&emsp;闭包最大的三个用途：&emsp;&emsp;1.上面提到的，获取函数内部的变量；&emsp;&emsp;2.让读取到的函数内部的值保存在内存中，方便调用时可以直接使用；&emsp;&emsp;3.当然还有一点，闭包可以保持作用域的清洁不受变量的污染；那么从第二点开始吧，demo: function outside(){ var n = 555; add = function(){n = n+5}; function inside(){ console.log(n); }; return inside;}var result = outside();result();//555add();result();//560在这里result实际上就是闭包inside函数，证明outside中的局部变量n一直保存在内存中，并没有在调用结束后就清除。第三点：demo： var data= { number : [1,2,3], strings : [“J”,”k”,”R”]};(function(data){ for(var i = 0; i &lt; data.number.length; i++){ console.log(data.number[i],data.strings[i]); } //1,’j’,2,’k’,3,’r’})(data);我们再次创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。 闭包的注意点：由于闭包会使得函数中的变量被保存在内存中，内存消耗很大，所以不能滥用，ie中可能导致内存泄露，在退出函数之前一定要将不使用的全局变量删除。还有一点，注意闭包会在父函数外部，改变父函数内部的值！本次更新最后：希望文章能对你的技术有帮助。由于本人水平有限，如有错误，欢迎大家指正。如果你在操作过程中发现一些没有讲到的错误或者问题，欢迎在评论留言，一起探讨，共同学习，共同进步！]]></content>
+      <categories>
+        <category>函数</category>
+      </categories>
+      <tags>
+        <tag>函数的闭包</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JavaScript 原型（面向对象）]]></title>
