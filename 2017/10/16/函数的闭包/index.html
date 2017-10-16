@@ -115,18 +115,18 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;em">
+<meta name="description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;e">
 <meta name="keywords" content="函数的闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数的闭包">
 <meta property="og:url" content="http://yoursite.com/2017/10/16/函数的闭包/index.html">
 <meta property="og:site_name" content="LsJoker">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;em">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-16T12:47:43.061Z">
+<meta property="og:updated_time" content="2017-10-16T12:51:29.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数的闭包">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;em">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。&amp;emsp;&amp;emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。个人见解：&amp;e">
 
 
 
@@ -464,12 +464,12 @@
       
 
       
-        <p>&emsp;&emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。</p>
+        <p> &emsp;&emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。</p>
 <blockquote>
 <p>官方解释：<br><br>&emsp;&emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。<br><br>&emsp;&emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。<br><br>个人见解：<br><br>&emsp;&emsp;通俗点说，我觉得应该是能够读取当前函数内部的变量的函数；本质上是将函数内部和函数外部链接起来的桥梁。直接上代码吧：<br><a id="more"></a></p>
 <p><pre><code>function outside(){<br>    var joker = “joker”;<br>    function inside(){<br>        console.log(joker);//这里outside内部的局部变量被inside访问了，可以借助inside来访问outside的局部变量，则inside就是一个闭包<br>    }<br>    return inside;<br>}<br>var result = outside();<br>result();//“joker”</code></pre><br>闭包的用途：<br><br>&emsp;&emsp;闭包最大的三个用途：<br><br>&emsp;&emsp;1.上面提到的，获取函数内部的变量；<br><br>&emsp;&emsp;2.让读取到的函数内部的值保存在内存中，方便调用时可以直接使用；<br><br>&emsp;&emsp;3.当然还有一点，闭包可以保持作用域的清洁不受变量的污染；<br><br><br><br>那么从第二点开始吧，demo:<br></p>
-<p><pre><code><br>function outside(){<br>    var n = 555;<br>    add = function(){n = n+5};<br>    function inside(){<br>        console.log(n);<br>    };<br>    return inside;<br>}<br>var result = outside();<br>result();//555<br>add();<br>result();//560<br></code></pre><br>在这里result实际上就是闭包inside函数，证明outside中的局部变量n一直保存在内存中，并没有在调用结束后就清除。<br><br>第三点：demo：<br></p>
-<p><pre><code><br>var data= {<br>    number : [1,2,3],<br>    strings : [“J”,”k”,”R”]<br>};<br>(function(data){<br>    for(var i = 0; i &lt; data.number.length; i++){<br>      console.log(data.number[i],data.strings[i]);<br>    }     //1,’j’,2,’k’,3,’r’<br>})(data);<br></code></pre><br>我们再次创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。</p>
+<p><pre><code><br>function outside(){<br>    var n = 555;<br>    add = function(){n = n+5};<br>    function inside(){<br>        console.log(n);<br>    };<br>    return inside;<br>}<br>var result = outside();<br>result();//555<br>add();<br>result();//560<br></code></pre><br> 在这里result实际上就是闭包inside函数，证明outside中的局部变量n一直保存在内存中，并没有在调用结束后就清除。<br><br>第三点：demo：<br></p>
+<p><pre><code><br>var data= {<br>    number : [1,2,3],<br>    strings : [“J”,”k”,”R”]<br>};<br>(function(data){<br>    for(var i = 0; i &lt; data.number.length; i++){<br>      console.log(data.number[i],data.strings[i]);<br>    }     //1,’j’,2,’k’,3,’r’<br>})(data);<br></code></pre><br> 我们再次创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。</p>
 <h2 id="闭包的注意点："><a href="#闭包的注意点：" class="headerlink" title="闭包的注意点："></a>闭包的注意点：</h2><p>由于闭包会使得函数中的变量被保存在内存中，内存消耗很大，所以不能滥用，ie中可能导致内存泄露，在退出函数之前一定要将不使用的全局变量删除。还有一点，注意闭包会在父函数外部，改变父函数内部的值！<br><br><br><br>本次更新最后：希望文章能对你的技术有帮助。<br>由于本人水平有限，如有错误，欢迎大家指正。如果你在操作过程中发现一些没有讲到的错误或者问题，欢迎在评论留言，一起探讨，共同学习，共同进步！</p>
 </blockquote>
 
