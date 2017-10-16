@@ -99,7 +99,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="理解原型," />
+  <meta name="keywords" content="LsJoker" />
 
 
 
@@ -115,22 +115,17 @@
 
 
 
-<meta name="description" content="上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章传送门。这篇文章主要介绍JS的面向对象中继承的原理。  一、什么是原型JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。 1. 原型对象在JavaScript中，我们创建一个函数A(就是声明一个函数), 那么浏览器就会在内存中创建一个原型对象B">
-<meta name="keywords" content="理解原型">
+<meta name="description" content="title: 函数的闭包date: 2017-10-16 20:05:44categories: 函数tags:   函数的闭包  &amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原型">
-<meta property="og:url" content="http://yoursite.com/2017/08/29/原型/index.html">
+<meta property="og:title" content="LsJoker">
+<meta property="og:url" content="http://yoursite.com/2017/10/16/函数的闭包-1/index.html">
 <meta property="og:site_name" content="LsJoker">
-<meta property="og:description" content="上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章传送门。这篇文章主要介绍JS的面向对象中继承的原理。  一、什么是原型JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。 1. 原型对象在JavaScript中，我们创建一个函数A(就是声明一个函数), 那么浏览器就会在内存中创建一个原型对象B">
+<meta property="og:description" content="title: 函数的闭包date: 2017-10-16 20:05:44categories: 函数tags:   函数的闭包  &amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-f4594e21110975d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-9a37ffdf7ca5d852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1917079-bac46a4e9ef6bd1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-09-10T13:02:55.514Z">
+<meta property="og:updated_time" content="2017-10-16T12:40:42.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原型">
-<meta name="twitter:description" content="上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章传送门。这篇文章主要介绍JS的面向对象中继承的原理。  一、什么是原型JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。 1. 原型对象在JavaScript中，我们创建一个函数A(就是声明一个函数), 那么浏览器就会在内存中创建一个原型对象B">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1917079-f4594e21110975d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="LsJoker">
+<meta name="twitter:description" content="title: 函数的闭包date: 2017-10-16 20:05:44categories: 函数tags:   函数的闭包  &amp;emsp;&amp;emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。  官方解释：&amp;emsp;&amp;emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也">
 
 
 
@@ -160,13 +155,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/29/原型/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/16/函数的闭包-1/"/>
 
 
 
 
 
-  <title>原型 | LsJoker</title>
+  <title> | LsJoker</title>
   
 
 
@@ -337,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/原型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/16/函数的闭包-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LsJoker">
@@ -354,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">原型</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -366,8 +361,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T08:47:35+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T20:05:44+08:00">
+                2017-10-16
               </time>
             
 
@@ -377,28 +372,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/原型/" itemprop="url" rel="index">
-                    <span itemprop="name">原型</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -406,7 +379,7 @@
 
           
           
-             <span id="/2017/08/29/原型/" class="leancloud_visitors" data-flag-title="原型">
+             <span id="/2017/10/16/函数的闭包-1/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计"> 
-                  2,239
+                  708
                 </span>
               
 
@@ -447,7 +420,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8min
+                  3min
                 </span>
               
             </div>
@@ -468,46 +441,18 @@
       
 
       
-        <blockquote>
-<p>上一篇文章中介绍了JS中的面向对象，如果还不是很了解的话建议重回上一篇文章<a href="https://lsjoker.github.io/2017/08/30/Js%E5%8E%9F%E5%9E%8B/#more" target="_blank" rel="external">传送门</a>。这篇文章主要介绍JS的面向对象中继承的原理。</p>
-</blockquote>
-<h2 id="一、什么是原型"><a href="#一、什么是原型" class="headerlink" title="一、什么是原型"></a>一、什么是原型</h2><p>JavaScript的继承就是基于原型的继承。所以想要学好JavaScript的面向对象就必须要学好JavaScript中的原型。</p>
-<p><strong>1. 原型对象</strong><br>在JavaScript中，我们创建一个函数A(<strong>就是声明一个函数</strong>), 那么浏览器就会在内存中创建一个原型对象B，而且每个函数都默认会有一个属性 <strong>prototype</strong> 指向了这个对象( 即：<strong>prototype的属性的值是这个对象</strong> )。这个对象B就是函数A的原型对象，简称函数的原型。这个原型对象B 默认会有一个属性 <strong>constructor</strong> 指向了这个函数A ( 意思就是说：constructor属性的值是函数A )。</p>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    	<span class="comment">/*</span></div><div class="line"><span class="comment">    		声明一个函数，则这个函数默认会有一个属性叫 prototype 。而且浏览器会自动按照一定的规则</span></div><div class="line"><span class="comment">    		创建一个对象，这个对象就是这个函数的原型对象，prototype属性指向这个原型对象。这个原型对象</span></div><div class="line"><span class="comment">    		有一个属性叫constructor 指向了这个函数</span></div><div class="line"><span class="comment">			</span></div><div class="line"><span class="comment">			注意：原型对象默认只有属性：constructor。其他都是从Object继承而来，暂且不用考虑。</span></div><div class="line"><span class="comment">		*/</span></div><div class="line">	    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	    	</div><div class="line">	    &#125;	    </div><div class="line">    &lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>body&gt;</div></pre></td></tr></table></figure>
-<p>上面声明了Person函数之后，浏览器做下图一样的处理。<br><img src="http://upload-images.jianshu.io/upload_images/1917079-f4594e21110975d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p><strong>2. 使用构造函数创建对象</strong><br>上一篇文章中已经介绍过了怎么使用构造函数创建对象了。这里主要是介绍一下使用构造函数创建对象时的一些细节。</p>
-<p>当把一个函数作为构造函数 (理论上任何函数都可以作为构造函数) 使用new创建对象的时候，那么这个对象就会存在一个默认的不可见的属性<strong>[[prototype]]</strong>，来指向了构造函数的原型对象。 <strong>这个不可见的属性我们一般用”[[ ]]”来表示，只是这个属性没有办法直接访问到。</strong></p>
-<p>直接上代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	    <span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	    	</div><div class="line">	    &#125;	</div><div class="line">        <span class="comment">/*</span></div><div class="line"><span class="comment">        	利用构造函数创建一个对象，则这个对象会自动添加一个不可见的属性 [[prototype]], 而且这个属性</span></div><div class="line"><span class="comment">        	指向了构造函数的原型对象。</span></div><div class="line"><span class="comment">        */</span></div><div class="line">      	<span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">    &lt;<span class="regexp">/script&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>body&gt;</div></pre></td></tr></table></figure></p>
-<p>这是的原理图就要变成下图了。<br><img src="http://upload-images.jianshu.io/upload_images/1917079-9a37ffdf7ca5d852.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <hr>
+<p>title: 函数的闭包<br>date: 2017-10-16 20:05:44<br>categories: 函数<br>tags: </p>
 <ul>
-<li><p>从上面的图示中可以看到，创建p1对象虽然使用的是Person构造函数，但是对象创建出来之后，这个p1对象其实已经与Person构造函数没有任何关系了，p1对象的[[ prototype ]]属性指向的是Person构造函数的原型对象。</p>
-</li>
-<li><p>如果使用new Person()创建多个对象，则多个对象都会同时指向Person构造函数的原型对象。我们可以手动给这个原型对象添加属性和方法，那么p1,p2,p3…这些对象就会共享这些在原型中添加的属性和方法。</p>
-</li>
-<li><p>如果我们访问p1中的一个属性name，如果在p1对象中找到，则直接返回。如果p1对象中没有找到，则直接去p1对象的[[prototype]]属性指向的原型对象中查找，如果查找到则返回。(如果原型中也没有找到，则继续向上找原型的原型—原型链。 后面再讲)。</p>
-</li>
-<li><p>如果通过p1对象添加了一个属性name，则对p1对象来说就屏蔽了原型中的属性name。 换句话说：在p1中就没有办法访问到原型的属性name了。</p>
-</li>
-<li><p>通过p1对象只能读取原型中的属性name的值，而不能修改原型中的属性name的值。 p1.name = “李四”; 并不是修改了原型中的值，而是在p1对象中给添加了一个属性name。</p>
-</li>
+<li>函数的闭包</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">	<span class="comment">// 可以使用Person.prototype 直接访问到原型对象</span></div><div class="line">	<span class="comment">//给Person函数的原型对象中添加一个属性 name并且值是 "张三"</span></div><div class="line">	Person.prototype.name = <span class="string">"张三"</span>;</div><div class="line">	Person.prototype.age = <span class="number">20</span>;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">		访问p1对象的属性name，虽然在p1对象中我们并没有明确的添加属性name，但是</span></div><div class="line"><span class="comment">		p1的 [[prototype]] 属性指向的原型中有name属性，所以这个地方可以访问到属性name</span></div><div class="line"><span class="comment">		就值。</span></div><div class="line"><span class="comment">		注意：这个时候不能通过p1对象删除name属性，因为只能删除在p1中删除的对象。</span></div><div class="line"><span class="comment">	*/</span></div><div class="line">	alert(p1.name); <span class="comment">// 张三</span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</div><div class="line">	alert(p2.name); <span class="comment">// 张三  都是从原型中找到的，所以一样。</span></div><div class="line"></div><div class="line">	alert(p1.name === p2.name); <span class="comment">// true</span></div><div class="line"></div><div class="line">	<span class="comment">// 由于不能修改原型中的值，则这种方法就直接在p1中添加了一个新的属性name，然后在p1中无法再访问到</span></div><div class="line">	<span class="comment">//原型中的属性。</span></div><div class="line">	p1.name = <span class="string">"李四"</span>;</div><div class="line">	alert(<span class="string">"p1："</span> + p1.name);</div><div class="line">	<span class="comment">// 由于p2中没有name属性，则对p2来说仍然是访问的原型中的属性。	</span></div><div class="line">	alert(<span class="string">"p2:"</span> + p2.name); <span class="comment">// 张三</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p>这时候的原理图如下：<br><img src="http://upload-images.jianshu.io/upload_images/1917079-bac46a4e9ef6bd1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<h2 id="二、组合使用原型模型和构造函数模型创建对象"><a href="#二、组合使用原型模型和构造函数模型创建对象" class="headerlink" title="二、组合使用原型模型和构造函数模型创建对象"></a>二、组合使用原型模型和构造函数模型创建对象</h2><p><strong>1. 原型模型创建对象的缺陷</strong><br>原型中的所有的属性都是共享的。也就是说，用同一个构造函数创建的对象去访问原型中的属性的时候，大家都是访问的同一个对象，如果一个对象对原型的属性进行了修改，则会反映到所有的对象上面。</p>
-<p>但是在实际使用中，每个对象的属性一般是不同的。张三的姓名是张三，李四的姓名是李四。</p>
-<p>​ <strong>但是，这个共享特性对方法(属性值是函数的属性)又是非常合适的。</strong>所有的对象共享方法是最佳状态。</p>
-<p><strong>2. 使用构造函数模型创建对象的缺陷</strong><br>在构造函数中添加的属性和方法，每个对象都有自己独有的一份，大家不会共享。这个特性对属性比较合适，但是对方法又不太合适。因为对所有对象来说，他们的方法应该是一份就够了，没有必要每人一份，造成内存的浪费和性能的低下。</p>
-<p><strong>3. 解决的方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.name = <span class="string">"李四"</span>;</div><div class="line">	    <span class="keyword">this</span>.age = <span class="number">20</span>;</div><div class="line">	    <span class="keyword">this</span>.eat = eat;</div><div class="line">	&#125;</div><div class="line">  	<span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	    alert(<span class="string">"吃完东西"</span>);</div><div class="line">    &#125;</div><div class="line">	<span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">	<span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</div><div class="line">	<span class="comment">//因为eat属性都是赋值的同一个函数，所以是true</span></div><div class="line">	alert(p1.eat === p2.eat); <span class="comment">//true</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在说正题之前，先报个歉博主最近在面试工作，所以都没有更新，下面说说大部分面试官文的有关技术的问题吧，首先是今天的闭包。</p>
 <blockquote>
-<p>但是上面的这种解决方法具有致命的缺陷：封装性太差。使用面向对象，目的之一就是封装代码，这个时候为了性能又要把代码抽出对象之外，这是反人类的设计。</p>
-</blockquote>
-<p><strong>4. 使用组合模式解决上述两种缺陷</strong><br>原型模式适合封装方法，构造方法模式适合封装属性，综合两种模式的优点就有了组合模式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="comment">//在构造方法内部封装属性</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	    <span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//在原型对象内封装方法</span></div><div class="line">	Person.prototype.eat = <span class="function"><span class="keyword">function</span> (<span class="params">food</span>) </span>&#123;</div><div class="line">		alert(<span class="keyword">this</span>.name + <span class="string">"爱吃"</span> + food);</div><div class="line">	&#125;</div><div class="line">	Person.prototype.play = <span class="function"><span class="keyword">function</span> (<span class="params">playName</span>) </span>&#123;</div><div class="line">		alert(<span class="keyword">this</span>.name + <span class="string">"爱玩"</span> + playName);</div><div class="line">	&#125;</div><div class="line">    </div><div class="line">	<span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">"李四"</span>, <span class="number">20</span>);</div><div class="line">	<span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">"张三"</span>, <span class="number">30</span>);</div><div class="line">	p1.eat(<span class="string">"苹果"</span>);</div><div class="line">	p2.eat(<span class="string">"香蕉"</span>);</div><div class="line">	p1.play(<span class="string">"志玲"</span>);</div><div class="line">	p2.play(<span class="string">"凤姐"</span>);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
-<p>组合模式，也并非完美无缺，有一点也是感觉不是很完美。把构造方法和原型分开写，总让人感觉不舒服，应该想办法把构造方法和原型封装在一起，所以就有了动态原型模式。</p>
-<p><strong>5. 动态原型模式</strong><br>动态原型模式把所有的属性和方法都封装在构造方法中，而仅仅在需要的时候才去在构造方法中初始化原型，又保持了同时使用构造函数和原型的优点。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="comment">//构造方法内部封装属性</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">		<span class="comment">//每个对象都添加自己的属性</span></div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	    <span class="keyword">this</span>.age = age;</div><div class="line">	    <span class="comment">/*</span></div><div class="line"><span class="comment">	    	判断this.eat这个属性是不是function，如果不是function则证明是第一次创建对象，</span></div><div class="line"><span class="comment">	    	则把这个funcion添加到原型中。</span></div><div class="line"><span class="comment">	    	如果是function，则代表原型中已经有了这个方法，则不需要再添加。</span></div><div class="line"><span class="comment">	    	perfect！完美解决了性能和代码的封装问题。</span></div><div class="line"><span class="comment">	    */</span></div><div class="line">	    <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="keyword">this</span>.eat !== <span class="string">"function"</span>)&#123;</div><div class="line">	    	Person.prototype.eat = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	    		alert(<span class="keyword">this</span>.name + <span class="string">" 在吃"</span>);</div><div class="line">	    	&#125;</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">"志玲"</span>, <span class="number">40</span>);</div><div class="line">	p1.eat();	</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
-<p>建议以后使用动态原型模式。他解决了组合模式的封装不彻底的缺点。</p>
-<blockquote>
-<p>希望文章能对你的技术有帮助。<br>由于本人水平有限，如有错误，欢迎大家指正。如果你在操作过程中发现一些没有讲到的错误或者问题，欢迎在评论留言，一起探讨，共同学习，共同进步！</p>
+<p>官方解释：<br><br>&emsp;&emsp;闭包是一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。<br><br>&emsp;&emsp;我相信大部分人应该跟我一样吧，这句话说真的，蛮绕的，接下来说说我的理解吧。<br><br>个人见解：<br><br>&emsp;&emsp;通俗点说，我觉得应该是能够读取当前函数内部的变量的函数；本质上是将函数内部和函数外部链接起来的桥梁。直接上代码吧：<br><a id="more"></a></p>
+<p><pre><code>function outside(){<br>    var joker = “joker”;<br>    function inside(){<br>        console.log(joker);//这里outside内部的局部变量被inside访问了，可以借助inside来访问outside的局部变量，则inside就是一个闭包<br>    }<br>    return inside;<br>}<br>var result = outside();<br>result();//“joker”</code></pre><br>闭包的用途：<br><br>&emsp;&emsp;闭包最大的三个用途：<br><br>&emsp;&emsp;1.上面提到的，获取函数内部的变量；<br><br>&emsp;&emsp;2.让读取到的函数内部的值保存在内存中，方便调用时可以直接使用；<br><br>&emsp;&emsp;3.当然还有一点，闭包可以保持作用域的清洁不受变量的污染；<br><br><br><br>那么从第二点开始吧，demo:<br></p>
+<p><pre><code><br>function outside(){<br>    var n = 555;<br>    add = function(){n = n+5};<br>    function inside(){<br>        console.log(n);<br>    };<br>    return inside;<br>}<br>var result = outside();<br>result();//555<br>add();<br>result();//560<br></code></pre><br>在这里result实际上就是闭包inside函数，证明outside中的局部变量n一直保存在内存中，并没有在调用结束后就清除。<br><br>第三点：demo：<br></p>
+<p><pre><code><br>var data= {<br>    number : [1,2,3],<br>    strings : [“J”,”k”,”R”]<br>};<br>(function(data){<br>    for(var i = 0; i &lt; data.number.length; i++){<br>      console.log(data.number[i],data.strings[i]);<br>    }     //1,’j’,2,’k’,3,’r’<br>})(data);<br></code></pre><br>我们再次创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。</p>
+<h2 id="闭包的注意点："><a href="#闭包的注意点：" class="headerlink" title="闭包的注意点："></a>闭包的注意点：</h2><p>由于闭包会使得函数中的变量被保存在内存中，内存消耗很大，所以不能滥用，ie中可能导致内存泄露，在退出函数之前一定要将不使用的全局变量删除。还有一点，注意闭包会在父函数外部，改变父函数内部的值！<br><br><br><br><br><br><br><br>本次更新最后：希望文章能对你的技术有帮助。<br>由于本人水平有限，如有错误，欢迎大家指正。如果你在操作过程中发现一些没有讲到的错误或者问题，欢迎在评论留言，一起探讨，共同学习，共同进步！</p>
 </blockquote>
 
       
@@ -556,12 +501,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/理解原型/" rel="tag"><i class="fa fa-tag"></i> 理解原型</a>
-          
-        </div>
-      
 
       
       
@@ -571,14 +510,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/30/Js原型/" rel="next" title="JavaScript 原型（面向对象）">
+                <i class="fa fa-chevron-left"></i> JavaScript 原型（面向对象）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/30/Js原型/" rel="prev" title="JavaScript 原型（面向对象）">
-                JavaScript 原型（面向对象） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/16/函数的闭包/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -781,7 +724,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是原型"><span class="nav-number">1.</span> <span class="nav-text">一、什么是原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、组合使用原型模型和构造函数模型创建对象"><span class="nav-number">2.</span> <span class="nav-text">二、组合使用原型模型和构造函数模型创建对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包的注意点："><span class="nav-number">1.</span> <span class="nav-text">闭包的注意点：</span></a></li></ol></div>
             
 
           </div>
